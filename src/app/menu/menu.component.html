@@ -1,0 +1,94 @@
+<ul class="sidebar-menu" id="nav-accordion" style="display: block;">
+  <li class="active">
+    <a  [routerLink]="['/']">
+      <i class="fa fa-dashboard"></i>
+      <span> Dashboard </span>
+    </a>
+  </li>
+
+  <li>
+    <a  [routerLink]="['/pos']">
+      <i class="fa fa-money"></i>
+      <span> POS </span>
+    </a>
+  </li>
+
+
+
+
+  <li class="sub-menu dcjq-parent-li">
+    <a [routerLink]="['/medicine']" class="dcjq-parent">
+      <i class="fa  fa-medkit"></i>
+      <span> Medicine </span>
+      <span class="dcjq-icon"></span></a>
+    <ul class="sub" style="display: none; overflow: hidden;">
+      <li><a [routerLink]="['/medicine/list']"><i class="fa fa-medkit"></i> Medicine List </a></li>
+      <li><a [routerLink]="['/medicine/addMedicineView']"><i class="fa fa-plus-circle"></i> Add Medicine </a></li>
+      <li><a [routerLink]="medicine/medicineStockAlert"><i class="fa fa-plus-circle"></i> Alert Stock List </a></li>
+      <li><a [routerLink]="medicine/medicineCategory"><i class="fa fa-edit"></i> Medicine Category </a></li>
+      <li><a [routerLink]="medicine/addCategoryView"><i class="fa fa-plus-circle"></i> Add Category </a></li>
+    </ul>
+  </li>
+
+  <li>
+    <a  [routerLink]="['/sales']">
+      <i class="fa fa-money"></i>
+      <span> All Sales </span>
+    </a>
+  </li>
+
+
+
+
+
+  <!--<li class="sub-menu dcjq-parent-li">
+    <a href="javascript:;" class="dcjq-parent active">
+      <i class="fa fa-dollar"></i> <i class="fa fa-dollar dollar"></i>
+      <span> Expenses </span>
+      <span class="dcjq-icon"></span></a>
+    <ul class="sub" style="overflow: hidden; display: block;">
+
+      <li><a href="finance/expense"><i class="fa fa-money"></i> Expense </a></li>
+      <li><a href="finance/addExpenseView"><i class="fa fa-plus-circle"></i> Add Expense </a></li>
+      <li><a href="finance/expenseCategory"><i class="fa fa-edit"></i> Expense   Category  </a></li>
+
+    </ul>
+  </li>-->
+
+
+  <li>
+    <a  [routerLink]="['/reports']">
+      <i class="fa fa-money"></i>
+      <span> Reporting </span>
+    </a>
+  </li>
+
+
+  <li>
+    <a [routerLink]="['/']">
+      <i class="fa fa-dashboard"></i>
+      <span> Staff </span>
+    </a>
+  </li>
+
+
+  <li>
+    <a  [routerLink]="['/settings']">
+      <i class="fa fa-gears"></i>
+      <span>  Settings  </span>
+    </a>
+  </li>
+
+
+  <li>
+    <a href="profile">
+      <i class="fa fa-user"></i>
+      <span>  Profile  </span>
+    </a>
+  </li>
+
+  <!--multi level menu start-->
+
+  <!--multi level menu end-->
+
+</ul>
