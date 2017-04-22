@@ -9,26 +9,78 @@
   .row {
     padding: 15px;
   }
-}
-
-.medselect {
-  width: 100%;
-  min-height: 300px;
-  background: red;
-  // overflow-y: scroll;
-  // overflow-x: hidden;
-  ul {
-    list-style: none;
-   li :hover{
-      display: block;
-      padding: 1px 0px;
-      font-size: 20px;
-    }
-    
+  input {
+    font-size: 13px;
   }
 }
 
- .item :hover {
-      background: whitesmoke;
-      color: white;
+.medselect {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 450px;
+  background: rgba(0, 0, 0, 0.12); // overflow-y: scroll;
+  // overflow-x: hidden;
+  ul {
+    padding: 0 4px;
+    li {
+      display: block;
+      list-style-type: none;
     }
+  }
+}
+
+.item {
+  margin: 0px;
+  float: left;
+  width: 100%;
+}
+
+.item:hover {
+  background: rgba(17, 34, 51, 0.57);
+  color: whitesmoke;
+  label {
+    display: block;
+  }
+  input {
+    color: whitesmoke;
+    margin: 5px 1px!important;
+    background: whitesmoke;
+    border-color: rgb(253, 251, 251);
+  }
+}
+
+.col-3 {
+  max-width: 12em!important;
+  height: 100px;
+}
+
+.selecteditem {
+  width: 15em;
+}
+
+.xlabel {
+  float: right;
+  margin: 1% 3%;
+  display: none;
+  &:hover {
+    color: red;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  background-color: #F5F5F5;
+}
+
+// ::-webkit-scrollbar {
+//     width: 2px;
+// }
+// ::-webkit-scrollbar-track {
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+//     border-radius: 1px;
+// }
+// ::-webkit-scrollbar-thumb {
+//     border-radius: 1px;
+//     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+// }

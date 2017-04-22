@@ -4,18 +4,44 @@
       Point Of Sales
     </div>
     <div>
-   <div class="row">
-  
-  <div class="col-3">
-    <input type="text" class="form-control" placeholder=".col-3">
-    <div  class="medselect" >
-      <ul >
-      <li  class="item" *ngFor="let item of iproducts">{{item.name}}</li>
-      </ul>
-    </div>
-  </div>
- 
-</div>
+      <div class="row">
+
+        <div class="col-3">
+          <input type="text" class="form-control" placeholder="search medicine">
+          <div class="medselect">
+            <ul>
+              <li (click)="itemadd(item)" class="item" *ngFor="let item of iproducts">{{item.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="selecteditem">
+          <div  class="form-control" >Selected Item</div>
+          <div class="medselect">
+            <ul>
+              <li class="item" *ngFor="let item of isselected">
+                <div style="width:100%;">
+                  {{item.name}}
+                  <span><label  (click)="itemremove(item)" class="xlabel"  >X</label><input class="inpu" style="width:40px; font-size:10px; padding: 4px 4px; float:right; background: transparent;" type="text" class="form-control"  placeholder="0"></span>
+                  </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-4">
+          <div><label>Sub Total</label><input type="text" class="form-control" disabled placeholder="0.00Tsh"></div>
+          <div><label>Discount (%)</label><input type="text" class="form-control" placeholder="0"></div>
+          <div><label> Gross Total</label><input type="text" class="form-control" disabled placeholder="0.00Tsh"></div>
+          <div><label> Amount Received</label><input type="text" class="form-control" placeholder="0.00Tsh"></div>
+<div style="padding:10px 0px;"> <button type="button" class="btn btn-primary btn-sm">Submit</button></div>
+        </div>
+      </div>
+      <!--<div class="row">
+         <div class="col-2">
+        <button type="button" class="btn btn-primary btn-sm">Submit</button>
+<button type="button" class="btn btn-secondary btn-sm">Submit</button>
+        <button type="button" class="btn btn-primary  btn-block">Submit</button>
+      </div>
+      </div>-->
     </div>
   </div>
 </section>
