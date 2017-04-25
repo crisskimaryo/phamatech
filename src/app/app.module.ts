@@ -12,6 +12,7 @@ import { MedicineComponent } from './medicine/medicine.component';
 import { SalesComponent } from './sales/sales.component';
 import { ReportComponent } from './report/report.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ServiceService } from './service.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { SettingsComponent } from './settings/settings.component';
     HttpModule,
     RoutingModule,
   ],
-  providers: [],
+  providers: [ServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

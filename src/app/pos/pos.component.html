@@ -7,7 +7,7 @@
       <div class="row">
 
         <div class="col-3">
-          <input type="text" class="form-control" placeholder="search medicine">
+          <input type="text" class="form-control" (keyup)="itemfilter($event)" [(ngModel)]="inputfilter" placeholder="search medicine">
           <div class="medselect">
             <ul>
               <li (click)="itemadd(item)" class="item" *ngFor="let item of iproducts">{{item.name}}</li>
@@ -15,14 +15,33 @@
           </div>
         </div>
         <div class="selecteditem">
-          <div  class="form-control" >Selected Item</div>
-          <div class="medselect">
+          <div class="form-control">Selected Item</div>
+          <div class="medselect"  style="height:450px;">
             <ul>
-              <li class="item" *ngFor="let item of isselected">
+              <li class="item " style="margin-bottom:10px; border-bottom: solid 1px hsla(0, 8%, 69%, 0.58);" *ngFor="let item of isselected">
                 <div style="width:100%;">
-                  {{item.name}}
-                  <span><label  (click)="itemremove(item)" class="xlabel"  >X</label><input class="inpu" style="width:40px; font-size:10px; padding: 4px 4px; float:right; background: transparent;" type="text" class="form-control"  placeholder="0"></span>
-                  </div>
+                  <label  (click)="itemremove(item)" class="xlabel"  >X</label>
+                  <ul>
+                    <li class="itemrow"> <label>Name : </label> {{item.name}}</li>
+                    <li> <label>Company :</label></li>
+                     <li> <label>Price :</label>{{" 2,000.00 tsh"}} </li>
+                    <li><label>Dose Type :</label>
+                      <span style="float:right">
+                      <select  class="inpu" style="font-size: 10px; padding: 0px 3px;  background: transparent;height: 25px;width: 100px;"  class="form-control">
+                       <option>full</option>
+                        <option>Dose</option>
+                       </select>
+                       </span>
+
+                    </li>
+                    <li><label>Quantity :</label>
+                      <span style="float:right">
+                    <input  class="inpu" style="width:40px; font-size:10px; padding: 4px 4px; float:right; background: transparent;" type="text" class="form-control"  placeholder="0"></span></li>
+
+                  </ul>
+
+
+                </div>
               </li>
             </ul>
           </div>
@@ -32,7 +51,7 @@
           <div><label>Discount (%)</label><input type="text" class="form-control" placeholder="0"></div>
           <div><label> Gross Total</label><input type="text" class="form-control" disabled placeholder="0.00Tsh"></div>
           <div><label> Amount Received</label><input type="text" class="form-control" placeholder="0.00Tsh"></div>
-<div style="padding:10px 0px;"> <button type="button" class="btn btn-primary btn-sm">Submit</button></div>
+          <div style="padding:10px 0px;"> <button type="button" class="btn btn-primary btn-sm">Submit</button></div>
         </div>
       </div>
       <!--<div class="row">

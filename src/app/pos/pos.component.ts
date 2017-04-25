@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-pos',
@@ -8,21 +9,23 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PosComponent implements OnInit {
   @Input() iproducts: any[];
   @Input() isselected: any = [];
+  key = '';
+  @Input() inputfilter;
+  iproducts2;
 
-
-  constructor() { }
+  constructor(private service: ServiceService) { }
 
   ngOnInit() {
-    this.iproducts = [
-      { 'id': 1, 'name': 'amoksiklav' },
-      { 'id': 2, 'name': 'paracetamol' },
-      { 'id': 3, 'name': 'citramon' },
-      { 'id': 4, 'name': 'cheston cold' },
-      { 'id': 5, 'name': 'brufen' },
-      { 'id': 6, 'name': 'combiflam' },
-    ]
+    this.data();
   }
 
+  data() {
+    this.service.medicinelist().subscribe((data) => {
+      this.iproducts = data;
+      this.iproducts2 = data;
+
+    });
+  }
   itemremove(item) {
     //remove selected
     const index = this.isselected.indexOf(item);
@@ -45,6 +48,33 @@ export class PosComponent implements OnInit {
     //   this.iproducts.splice(index, 1);
     //   console.log(this.iproducts);
     // }
+
+    // refresh filter box
+    //
+    console.log(this.inputfilter = '');
+    // temporal solution 
+    this.iproducts = this.iproducts2;
+    // below code  affect selecteditem to be unique
+    // this.data();
   }
 
+  itemfilter(ev: any) {
+     // TODO:
+    // the search should also filter on backspace
+    this.key = ev.target.value;
+    console.log(this.key);
+    if (this.key && this.key.trim() !== '') {
+
+      this.iproducts = this.iproducts.filter((item) => {
+        // return item.name.toLowerCase() === this.key.toLowerCase();
+        return (item.name.toLowerCase().indexOf(this.key.toLowerCase()) > -1);
+      });
+    }
+    if (this.inputfilter.length < 1) {
+      this.iproducts = this.iproducts2;
+      // this.data();
+      this.key = '';
+    }
+
+  }
 }
