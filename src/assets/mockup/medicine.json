@@ -1,25 +1,49 @@
 [{
     "id": 1,
-    "name": "amoksiklav"
+    "name": "amoksiklav",
+    "company": "zafar",
+    "price":2500.00,
+    "dose": "",
+    "quantity": ""
   },
   {
     "id": 2,
-    "name": "paracetamol"
+    "name": "paracetamol",
+    "company": "Sanofi India",
+    "price": 3200.00 ,
+    "dose": "",
+    "quantity": ""
   },
   {
     "id": 3,
-    "name": "citramon"
+    "name": "citramon",
+    "company": "Aspirino",
+    "price": 5000.00,
+    "dose": "",
+    "quantity": ""
   },
   {
     "id": 4,
-    "name": "cheston cold"
+    "name": "cheston cold",
+    "company": "bangla",
+    "price": 10000.00,
+    "dose": "",
+    "quantity": ""
   },
   {
     "id": 5,
-    "name": "brufen"
+    "name": "brufen",
+    "company": "BEXIMCO",
+    "price": 4300.00,
+    "dose": "",
+    "quantity": ""
   },
   {
     "id": 6,
-    "name": "combiflam"
+    "name": "combiflam",
+    "company": "",
+    "price": 1600.00,
+    "dose": "",
+    "quantity": ""
   }
 ]

@@ -8,7 +8,7 @@ export class ServiceService {
   constructor(private http: Http) { }
 
   medicinelist() {
-    return this.http.get('../assets/mockup/medicine.json').map(res => res.json());
+    return this.http.get('assets/mockup/medicine.json').map(res => res.json());
   }
 
 }

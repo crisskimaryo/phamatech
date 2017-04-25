@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { ServiceService } from '../service.service';
 
 @Component({
@@ -6,17 +6,50 @@ import { ServiceService } from '../service.service';
   templateUrl: './pos.component.html',
   styleUrls: ['./pos.component.scss']
 })
-export class PosComponent implements OnInit {
+export class PosComponent implements OnInit, DoCheck {
   @Input() iproducts: any[];
   @Input() isselected: any = [];
   key = '';
   @Input() inputfilter;
   iproducts2;
+  @Input() subtotal = 0.00;
+  @Input() grosstotal = 0.00;
+  discount = 0;
+  qnty = 1;
 
   constructor(private service: ServiceService) { }
 
   ngOnInit() {
     this.data();
+
+  }
+  ngDoCheck() {
+    // console.log(this.qnty);
+
+    let totalprice = 0;
+    if (this.isselected.length > 0) {
+      this.isselected.forEach(element => {
+
+        totalprice += element.price * element.quantity;
+      });
+      this.subtotal = totalprice;
+      // TODO:
+      // limit the respond for (0 to 100) only
+      this.grosstotal = totalprice - ((totalprice / 100) * this.discount)
+
+    }
+  }
+  updateqnty(ev: any, item) {
+    let qt = ev.target.value;
+    const index = this.isselected.indexOf(item);
+    // console.log(item);
+    if (qt > 0) {
+      // const newprice = this.isselected[index].price * qt;
+      // console.log(this.isselected[index].price = newprice);
+      console.log(this.isselected[index].quantity = qt)
+
+      return console.log(this.isselected[index]);
+    }
   }
 
   data() {
@@ -27,18 +60,25 @@ export class PosComponent implements OnInit {
     });
   }
   itemremove(item) {
+
     //remove selected
     const index = this.isselected.indexOf(item);
     if (index > -1) {
       this.isselected.splice(index, 1);
-      console.log(this.isselected);
+      // console.log(this.isselected);
+
+    }
+    if (this.isselected.length < 1) {
+      this.subtotal = 0;
     }
   }
   itemadd(item) {
-    console.log(item)
+    // console.log(item)
     const index = this.isselected.indexOf(item);
-    console.log(index)
+    // console.log(index)
     if (index === -1) {
+      item.newprice = item.price;
+      item.quantity = 1;
       this.isselected.push(item);
     }
     //TODO:check if the item is availabe on selecteditem
@@ -51,7 +91,7 @@ export class PosComponent implements OnInit {
 
     // refresh filter box
     //
-    console.log(this.inputfilter = '');
+    this.inputfilter = '';
     // temporal solution 
     this.iproducts = this.iproducts2;
     // below code  affect selecteditem to be unique
@@ -59,10 +99,10 @@ export class PosComponent implements OnInit {
   }
 
   itemfilter(ev: any) {
-     // TODO:
+    // TODO:
     // the search should also filter on backspace
     this.key = ev.target.value;
-    console.log(this.key);
+    // console.log(this.key);
     if (this.key && this.key.trim() !== '') {
 
       this.iproducts = this.iproducts.filter((item) => {
